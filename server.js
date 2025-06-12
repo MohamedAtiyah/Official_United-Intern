@@ -5,6 +5,7 @@ const db = require('./config/db');
 const authRoutes = require('./routes/auth');
 const internshipRoutes = require('./routes/internships');
 const studentRoutes = require('./routes/students');
+const accountRoutes = require('./routes/account');
 
 // Test MySQL connection
 // This will run once when the server starts
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use(authRoutes);
 app.use(internshipRoutes);
 app.use(studentRoutes);
+app.use(accountRoutes);
 
 // Serve static files from the root directory
 app.use(express.static(__dirname));
@@ -34,4 +36,4 @@ app.get('/', (req, res) => {
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
-}); 
+});
