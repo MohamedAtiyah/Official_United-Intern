@@ -1,0 +1,127 @@
+body {
+    background: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.home-container {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-box {
+    background: #fff;
+    padding: 40px 32px 32px 32px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+}
+
+.home-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.home-tagline {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    font-family: Arial, sans-serif;
+}
+
+.home-role-select h2 {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 18px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+.home-role-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.home-role-buttons.four-btns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 18px;
+    margin-bottom: 0;
+}
+
+.emoji {
+    display: block;
+    font-size: 1.8em;
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+.home-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    min-height: 80px;
+    font-family: Arial, sans-serif;
+}
+
+.student-btn {
+    background: #007bff;
+}
+.student-btn:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+}
+
+.org-btn {
+    background: #28a745;
+}
+.org-btn:hover {
+    background: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);
+}
+
+.home-signup-links {
+    margin-top: 8px;
+    font-size: 0.98rem;
+    font-family: Arial, sans-serif;
+}
+
+.home-signup-links a {
+    color: #007bff;
+    text-decoration: none;
+    margin: 0 4px;
+    transition: text-decoration 0.2s;
+    font-family: Arial, sans-serif;
+}
+
+.home-signup-links a:hover {
+    text-decoration: underline;
+}
+
+ 

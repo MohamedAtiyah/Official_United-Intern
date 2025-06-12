@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="Admin_Dashboard.css">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <!-- Left Image -->
+        <img src="Dashboard_IMG_Left.jpg" alt="Left" class="dashboard-img">
+
+        <!-- Center Dashboard -->
+        <div class="dashboard-container">
+            <h1 id="welcomeMessage">Welcome, [Company Name]</h1>
+            <div class="button-group">
+                <a href="Admin_Manage_Internship.html" class="dashboard-button">Manage Internships</a>
+                <a href="Admin_View_Internships.html" class="dashboard-button">View Internships</a>
+                <a href="Admin_Account.html" class="dashboard-button">Account Settings</a>
+                <a href="Admin_Logout.html" class="dashboard-button logout-button">Logout</a>
+            </div>
+        </div>
+
+        <!-- Right Image -->
+        <img src="Dashboard_IMG_Right.jpg" alt="Right" class="dashboard-img">
+    </div>
+
+    <script>
+        // Load company name from sessionStorage or localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            const companyData = sessionStorage.getItem('companyData') || localStorage.getItem('companyData');
+            if (companyData) {
+                const company = JSON.parse(companyData);
+                const welcomeMessage = document.getElementById('welcomeMessage');
+                welcomeMessage.textContent = `Welcome, ${company.name || '[Company Name]'}`;
+            } else {
+                // If no company data, redirect to login
+                window.location.href = 'Admin_Login.html';
+            }
+        });
+    </script>
+</body>
+</html>

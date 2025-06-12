@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manage Internships</title>
+  <link rel="stylesheet" href="Admin_Manage_Internship.css">
+</head>
+<body>
+  <div class="manage-container">
+    <header>
+      <div class="container">
+        <nav>
+          <ul>
+            <li><a href="Admin_Dashboard.html">Dashboard</a></li>
+            <li><a href="Admin_Manage_Internship.html">Manage Internships</a></li>
+            <li><a href="Admin_View_Internships.html">View Internships</a></li>
+            <li><a href="Admin_Account.html">Account</a></li>
+            <li><a href="Admin_Logout.html">Logout</a></li>
+          </ul>
+        </nav>
+        <div class="header-content">
+          <div class="header-spacer"></div>
+          <h2 class="header-title">Manage Internships</h2>
+          <button class="add-btn">Add New Internship</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="table-container">
+      <table class="internship-table">
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Title</th>
+            <th>Location</th>
+            <th>Duration</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Applications</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="internship-tbody">
+          <!-- Internship rows will be rendered here dynamically -->
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pagination">
+      <button class="prev-btn">Previous</button>
+      <span class="page-info">Page 1 of 1</span>
+      <button class="next-btn">Next</button>
+    </div>
+  </div>
+  <script src="Admin_Manage_Internship.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Sign Up</title>
+  <link rel="stylesheet" href="Student_Signup.css">
+</head>
+<body>
+  <div class="login-container" style="margin: 60px auto;">
+    <h2>Student Sign Up</h2>
+    <p class="subtitle">Create your student account</p>
+    <form id="signupForm">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required />
+      </div>
+      <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="Student_Login.html">Log in</a></p>
+  </div>
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const submitBtn = form.querySelector('button[type="submit"]');
+      
+      // Disable button during registration
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Registering...';
+      
+      try {
+        const data = {
+          name: form.name.value,
+          email: form.email.value,
+          password: form.password.value
+        };
+        
+        const response = await fetch('/api/student/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok && result.success) {
+          alert('Registration successful! You can now log in.');
+          window.location.href = 'Student_Login.html';
+        } else {
+          alert(result.message || 'Registration failed. Please try again.');
+        }
+      } catch (error) {
+        console.error('Registration error:', error);
+        alert('Registration failed. Please try again.');
+      } finally {
+        // Re-enable button
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Register';
+      }
+    });
+  </script>
+</body>
+</html> 

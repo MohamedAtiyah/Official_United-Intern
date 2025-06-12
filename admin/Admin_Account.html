@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Account Settings</title>
+  <link rel="stylesheet" href="Admin_Account.css">
+</head>
+<body>
+  <div class="manage-container">
+    <header>
+      <div class="container">
+        <nav>
+          <ul>
+            <li><a href="Admin_Dashboard.html">Dashboard</a></li>
+            <li><a href="Admin_Manage_Internship.html">Manage Internships</a></li>
+            <li><a href="Admin_View_Internships.html">View Internships</a></li>
+            <li><a href="Admin_Account.html">Account</a></li>
+            <li><a href="Admin_Logout.html">Logout</a></li>
+          </ul>
+        </nav>
+        <div class="header-content">
+          <div class="header-spacer"></div>
+          <h2 class="header-title">Account Settings</h2>
+          <div class="header-spacer"></div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <form id="accountForm">
+        <div class="form-group">
+          <label for="companyName">Company Name</label>
+          <input type="text" id="companyName" name="companyName" placeholder="Enter company name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Company Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter company email" readonly>
+        </div>
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input type="text" id="location" name="location" placeholder="Enter company location" required>
+        </div>
+        <div class="form-group">
+          <label for="description">Company Description</label>
+          <textarea id="description" name="description" placeholder="Enter company description" rows="4"></textarea>
+        </div>
+        <button type="submit" class="update-btn">Update Settings</button>
+      </form>
+    </main>
+  </div>
+  <script>
+    // Load company data on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      loadCompanyData();
+    });
+
+    // Load actual company data from localStorage
+    function loadCompanyData() {
+      const companyData = sessionStorage.getItem('companyData') || localStorage.getItem('companyData');
+      if (companyData) {
+        const company = JSON.parse(companyData);
+        console.log('Loading company data:', company);
+        
+        // Populate form fields with actual company data
+        document.getElementById('companyName').value = company.name || '';
+        document.getElementById('email').value = company.email || '';
+        document.getElementById('location').value = company.location || '';
+        document.getElementById('description').value = company.description || 'A leading company providing quality internship opportunities for students.';
+      } else {
+        // If no company data, redirect to login
+        console.log('No company data found, redirecting to login');
+        window.location.href = 'Admin_Login.html';
+      }
+    }
+
+    // Handle form submission
+    document.getElementById('accountForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = {
+        companyName: formData.get('companyName'),
+        location: formData.get('location'),
+        description: formData.get('description')
+      };
+      
+      // Update storage with new data
+      const currentCompanyData = JSON.parse(sessionStorage.getItem('companyData') || localStorage.getItem('companyData') || '{}');
+      const updatedCompanyData = {
+        ...currentCompanyData,
+        name: data.companyName,
+        location: data.location,
+        description: data.description
+      };
+      // Update both storage methods for consistency
+      sessionStorage.setItem('companyData', JSON.stringify(updatedCompanyData));
+      localStorage.setItem('companyData', JSON.stringify(updatedCompanyData));
+      
+      // Show success message
+      alert('Account settings updated successfully!');
+      console.log('Updated data:', data);
+    });
+  </script>
+</body>
+</html>

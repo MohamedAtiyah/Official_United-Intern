@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Internships - Admin Dashboard</title>
+    <link rel="stylesheet" href="Admin_View_Internships.css">
+</head>
+<body>
+    <div class="manage-container">
+        <header>
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="Admin_Dashboard.html">Dashboard</a></li>
+                        <li><a href="Admin_Manage_Internship.html">Manage Internships</a></li>
+                        <li><a href="Admin_View_Internships.html">View Internships</a></li>
+                        <li><a href="Admin_Account.html">Account</a></li>
+                        <li><a href="Admin_Logout.html">Logout</a></li>
+                    </ul>
+                </nav>
+                <div class="header-content">
+                    <div class="header-spacer"></div>
+                    <h2 class="header-title">Internship Listings</h2>
+                    <div class="header-spacer"></div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="filters">
+                <h2>Filter Internships</h2>
+                <div class="filter-controls">
+                    <select id="statusFilter">
+                        <option value="all">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="closed">Closed</option>
+                    </select>
+                    <input type="text" id="searchInput" placeholder="Search internships...">
+                </div>
+            </section>
+
+            <section class="internships-list">
+                <h2>Available Internships</h2>
+                <div id="internshipsContainer">
+                    <div style="text-align: center; padding: 40px; color: #666;">Loading internships...</div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Application Modal -->
+    <div id="applicationModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Applications for <span id="internshipTitle"></span></h2>
+            <div id="applicationsList">
+                <!-- Applications will be loaded here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script src="View_Internships.js"></script>
+</body>
+</html> 
