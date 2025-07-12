@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manage Applications - United Intern</title>
+  <link rel="stylesheet" href="Admin_Manage_Applications.css">
+</head>
+<body>
+  <div class="manage-container">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-content">
+          <div class="brand-section">
+            <h1 class="brand-name">United Intern</h1>
+          </div>
+          <nav class="admin-nav">
+            <a href="Admin_Dashboard.html">Dashboard</a>
+            <a href="Admin_Manage_Internship.html">Manage Internships</a>
+            <a href="Admin_View_Internships.html">View Internships</a>
+            <a href="Admin_Manage_Applications.html" class="nav-active">Manage Applications</a>
+            <a href="Admin_Account.html">Account</a>
+          </nav>
+          <div class="logout-section">
+            <a href="Admin_Logout.html" class="logout-btn">Logout</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="filters">
+        <h2>Filter Applications</h2>
+        <div class="filter-controls">
+          <select id="statusFilter">
+            <option value="all">All Applications</option>
+            <option value="pending">Pending</option>
+            <option value="accepted">Accepted</option>
+            <option value="rejected">Rejected</option>
+          </select>
+          <select id="internshipFilter">
+            <option value="all">All Internships</option>
+            <!-- Options will be populated dynamically -->
+          </select>
+          <input type="text" id="searchInput" placeholder="Search by student name...">
+        </div>
+      </section>
+
+      <section class="internships-list">
+        <h2>Application Requests</h2>
+        <div id="internshipsContainer">
+          <table class="applications-table">
+            <thead>
+              <tr>
+                <th>Student Name</th>
+                <th>Student Email</th>
+                <th>Internship Title</th>
+                <th>Application Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="applications-tbody">
+              <!-- Application rows will be rendered here dynamically -->
+            </tbody>
+          </table>
+
+          <div id="loadingMessage" class="loading-message">
+            Loading applications...
+          </div>
+
+          <div id="noApplications" class="no-data" style="display: none;">
+            No applications found.
+          </div>
+
+          <div class="pagination">
+            <button class="prev-btn" id="prevBtn">Previous</button>
+            <span class="page-info" id="pageInfo">Page 1 of 1</span>
+            <button class="next-btn" id="nextBtn">Next</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <script src="Admin_Manage_Applications.js"></script>
+</body>
+</html> 

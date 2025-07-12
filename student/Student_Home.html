@@ -1,20 +1,299 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Student Home</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard - United Intern</title>
   <link rel="stylesheet" href="Student_Home.css">
 </head>
 <body>
-  <div class="navbar">
-    <a href="Student_Home.html">Dashboard</a>
+  <!-- Navigation Header -->
+  <header class="main-header">
+    <div class="container">
+      <div class="header-content">
+        <div class="brand-section">
+          <h1 class="brand-name">United Intern</h1>
+        </div>
+        <nav class="admin-nav">
+          <a href="Student_Home.html" class="nav-active">Dashboard</a>
     <a href="Student_Internships.html">Browse Internships</a>
     <a href="Student_Applications.html">My Applications</a>
     <a href="Student_Profile.html">Profile</a>
-    <a href="Student_Logout.html">Logout</a>
+        </nav>
+        <div class="logout-section">
+          <a href="Student_Logout.html" class="logout-btn">Logout</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-text">
+                                <h1 id="welcomeMessage">Welcome to United Intern</h1>
+                        <h2>Your Gateway to Professional Excellence</h2>
+                        <p class="hero-description">
+                            Connect with leading companies, discover meaningful internship opportunities, 
+                            and build the career you've always dreamed of. Join thousands of students 
+                            who have launched their careers through our platform.
+                        </p>
+        <div class="hero-buttons">
+          <a href="Student_Internships.html" class="btn btn-primary">Browse Internships</a>
+          <a href="Student_Applications.html" class="btn btn-secondary">My Applications</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="Dashboard_IMG_Center_Student.png" alt="Student Success" class="main-image">
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics Section -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <h3 id="totalInternships">500+</h3>
+          <p>Active Internships</p>
+        </div>
+        <div class="stat-item">
+          <h3 id="totalCompanies">200+</h3>
+          <p>Partner Companies</p>
+        </div>
+        <div class="stat-item">
+          <h3 id="totalStudents">10,000+</h3>
+          <p>Student Success Stories</p>
+        </div>
+        <div class="stat-item">
+          <h3>95%</h3>
+          <p>Placement Rate</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Student Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="container">
+      <h2 class="section-title">Student Success Stories</h2>
+                          <p class="section-subtitle">Hear from students who found their dream internships through United Intern</p>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">
+              <div class="avatar-placeholder">SA</div>
+            </div>
+            <div class="testimonial-info">
+              <h4>Sarah Ahmed</h4>
+              <p>Computer Science, University of Dubai</p>
+              <span class="internship-role">Software Engineering Intern at TechCorp</span>
+            </div>
+          </div>
+          <div class="testimonial-content">
+                                        <p>"United Intern completely transformed my career prospects. I found an incredible software engineering internship that led to a full-time offer. The platform made it so easy to connect with top companies and showcase my skills. I couldn't have asked for a better experience!"</p>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">
+              <div class="avatar-placeholder">MK</div>
+            </div>
+            <div class="testimonial-info">
+              <h4>Mohammed Khalil</h4>
+              <p>Business Administration, AUS</p>
+              <span class="internship-role">Marketing Intern at GlobalCorp</span>
+            </div>
+          </div>
+          <div class="testimonial-content">
+                                        <p>"The quality of internship opportunities on United Intern is exceptional. I landed a marketing internship at a Fortune 500 company, and the experience has been invaluable. The platform's interface is user-friendly, and the application process is seamless."</p>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">
+              <div class="avatar-placeholder">LR</div>
+            </div>
+            <div class="testimonial-info">
+              <h4>Layla Rahman</h4>
+              <p>Finance, American University of Dubai</p>
+              <span class="internship-role">Finance Intern at Investment Bank</span>
+            </div>
+          </div>
+          <div class="testimonial-content">
+                                        <p>"Thanks to United Intern, I secured a prestigious finance internship that opened doors I never thought possible. The networking opportunities and career guidance available through the platform are unmatched. I highly recommend it to every student."</p>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">
+              <div class="avatar-placeholder">AH</div>
+            </div>
+            <div class="testimonial-info">
+              <h4>Ahmed Hassan</h4>
+              <p>Engineering, Khalifa University</p>
+              <span class="internship-role">Engineering Intern at InnovateTech</span>
+            </div>
+          </div>
+          <div class="testimonial-content">
+                                        <p>"United Intern provided me with access to internships I wouldn't have found elsewhere. The personalized matching system helped me find the perfect engineering role that aligned with my career goals. The support team was incredibly helpful throughout the process."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Organizer/Company Testimonials Section -->
+  <section class="company-testimonials-section">
+    <div class="container">
+      <h2 class="section-title">What Our Partner Companies Say</h2>
+                          <p class="section-subtitle">Leading organizations trust United Intern to connect them with top talent</p>
+      
+      <div class="company-testimonials-grid">
+        <div class="company-testimonial-card">
+          <div class="company-header">
+            <div class="company-logo">
+              <div class="logo-placeholder">TC</div>
+            </div>
+            <div class="company-info">
+              <h4>TechCorp Solutions</h4>
+              <p>Technology & Innovation</p>
+              <span class="company-role">HR Director - Sarah Mitchell</span>
+            </div>
+          </div>
+          <div class="testimonial-content">
+                                        <p>"United Intern has revolutionized our intern recruitment process. We've hired over 50 interns through the platform, and each one has brought exceptional value to our organization. The quality of candidates is consistently outstanding, and the platform makes management effortless."</p>
+          </div>
+        </div>
+
+        <div class="company-testimonial-card">
+          <div class="company-header">
+            <div class="company-logo">
+              <div class="logo-placeholder">GC</div>
+            </div>
+            <div class="company-info">
+              <h4>GlobalCorp Industries</h4>
+              <p>Multinational Corporation</p>
+              <span class="company-role">Talent Acquisition Lead - Michael Chen</span>
+            </div>
+          </div>
+          <div class="testimonial-content">
+                                        <p>"The caliber of students we've recruited through United Intern is exceptional. The platform's filtering system helps us find candidates who perfectly match our requirements. Many of our current full-time employees started as interns from this platform."</p>
+          </div>
+        </div>
+
+        <div class="company-testimonial-card">
+          <div class="company-header">
+            <div class="company-logo">
+              <div class="logo-placeholder">IB</div>
+            </div>
+            <div class="company-info">
+              <h4>Investment Bank UAE</h4>
+              <p>Financial Services</p>
+              <span class="company-role">Head of Recruitment - Fatima Al-Zahra</span>
+            </div>
+          </div>
+          <div class="testimonial-content">
+                                        <p>"United Intern is our go-to platform for finding top-tier finance interns. The students are well-prepared, motivated, and bring fresh perspectives to our teams. The streamlined application and interview process saves us significant time and resources."</p>
+          </div>
+        </div>
+
+        <div class="company-testimonial-card">
+          <div class="company-header">
+            <div class="company-logo">
+              <div class="logo-placeholder">IT</div>
+            </div>
+            <div class="company-info">
+              <h4>InnovateTech</h4>
+              <p>Engineering & Technology</p>
+              <span class="company-role">Engineering Manager - David Johnson</span>
+            </div>
+          </div>
+          <div class="testimonial-content">
+                                        <p>"We've built lasting partnerships with universities through United Intern. The platform not only helps us find talented interns but also contributes to the development of the next generation of engineers. It's a win-win for everyone involved."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Launch Your Career?</h2>
+        <p>Join thousands of students who have found their dream internships. Start your journey today!</p>
+        <div class="cta-buttons">
+          <a href="Student_Internships.html" class="btn btn-primary">Explore Opportunities</a>
+          <a href="Student_Profile.html" class="btn btn-outline">Complete Your Profile</a>
+        </div>
+      </div>
   </div>
-  <div class="main-content">
-    <h1>Welcome, Student!</h1>
-    <p>Use the navigation above to browse internships, view your applications, or update your profile.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+                  <p>&copy; 2024 United Intern. All rights reserved.</p>
+      <p>Connecting students with their future, one internship at a time.</p>
   </div>
+  </footer>
+
+  <script>
+    // Load student name from sessionStorage or localStorage
+    document.addEventListener('DOMContentLoaded', function() {
+      const studentData = sessionStorage.getItem('studentData') || localStorage.getItem('studentData');
+      if (studentData) {
+        const student = JSON.parse(studentData);
+        const welcomeMessage = document.getElementById('welcomeMessage');
+        welcomeMessage.textContent = `Welcome back, ${student.name || 'Student'}!`;
+      }
+      
+      // Load dynamic statistics (optional - can be implemented later)
+      loadDashboardStats();
+    });
+
+    // Function to load dashboard statistics
+    async function loadDashboardStats() {
+      try {
+        // You can implement API calls here to get real statistics
+        // For now, using static numbers
+        const stats = {
+          internships: '500+',
+          companies: '200+',
+          students: '10,000+'
+        };
+        
+        // Update stats with animation effect
+        animateCounter('totalInternships', 500);
+        animateCounter('totalCompanies', 200);
+        animateCounter('totalStudents', 10000);
+      } catch (error) {
+        console.log('Stats loading not implemented yet');
+      }
+    }
+
+    // Simple counter animation
+    function animateCounter(elementId, targetValue) {
+      const element = document.getElementById(elementId);
+      if (!element) return;
+      
+      let currentValue = 0;
+      const increment = targetValue / 50;
+      const timer = setInterval(() => {
+        currentValue += increment;
+        if (currentValue >= targetValue) {
+          clearInterval(timer);
+          element.textContent = targetValue >= 1000 ? (targetValue/1000).toFixed(0) + 'K+' : targetValue + '+';
+        } else {
+          element.textContent = Math.floor(currentValue) >= 1000 ? (Math.floor(currentValue)/1000).toFixed(0) + 'K+' : Math.floor(currentValue) + '+';
+        }
+      }, 20);
+    }
+  </script>
 </body>
 </html> 

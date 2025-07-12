@@ -6,6 +6,7 @@ const authRoutes = require('./routes/auth');
 const internshipRoutes = require('./routes/internships');
 const studentRoutes = require('./routes/students');
 const accountRoutes = require('./routes/account');
+const applicationRoutes = require('./routes/applications');
 
 // Test MySQL connection
 // This will run once when the server starts
@@ -23,6 +24,7 @@ app.use(authRoutes);
 app.use(internshipRoutes);
 app.use(studentRoutes);
 app.use(accountRoutes);
+app.use(applicationRoutes);
 
 // Serve static files from the root directory
 app.use(express.static(__dirname));

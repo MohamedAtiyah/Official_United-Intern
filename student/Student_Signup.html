@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="Student_Signup.css">
 </head>
 <body>
-  <div class="login-container" style="margin: 60px auto;">
+  <div class="signup-container">
     <h2>Student Sign Up</h2>
     <p class="subtitle">Create your student account</p>
     <form id="signupForm">
@@ -21,9 +21,11 @@
         <label for="password">Password</label>
         <input type="password" id="password" name="password" placeholder="Enter your password" required />
       </div>
-      <button type="submit">Register</button>
+      <button type="submit" class="signup-btn">Register</button>
     </form>
-    <p>Already have an account? <a href="Student_Login.html">Log in</a></p>
+    <div class="login-link">
+      Already have an account? <a href="Student_Login.html">Log in</a>
+    </div>
   </div>
   <script>
     document.getElementById('signupForm').addEventListener('submit', async function(e) {

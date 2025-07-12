@@ -1,4 +1,4 @@
-/* Simple Manage Internships CSS - Exact Copy of View Internships Style */
+/* Simple Manage Applications CSS - Exact Copy of View Internships Style */
 * {
     margin: 0;
     padding: 0;
@@ -11,6 +11,13 @@ body {
     background-color: #f5f5f5;
     color: #333;
     min-height: 100vh;
+}
+
+/* Main Content */
+main {
+    width: 100%;
+    background: transparent;
+    padding: 0;
 }
 
 .manage-container {
@@ -132,8 +139,9 @@ body {
 /* Main Content */
 main {
     width: 100%;
-    background: transparent;
-    padding: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 /* Filter Section */
@@ -188,7 +196,7 @@ input::placeholder {
     color: #999;
 }
 
-/* Internships List */
+/* Applications List */
 .internships-list {
     background: white;
     padding: 0;
@@ -200,37 +208,12 @@ input::placeholder {
     box-sizing: border-box;
 }
 
-.internships-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 20px 10px 20px;
-}
-
 .internships-list h2 {
     font-size: 20px;
     font-weight: bold;
     color: #333;
     margin: 0;
-}
-
-.add-btn {
-    background: #27ae60;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-}
-
-.add-btn:hover {
-    background: #229954;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(39, 174, 96, 0.3);
+    padding: 20px 20px 10px 20px;
 }
 
 #internshipsContainer {
@@ -244,14 +227,14 @@ input::placeholder {
     padding: 20px;
 }
 
-.internship-table {
+.applications-table {
     width: 100%;
     border-collapse: collapse;
     background: white;
     border: 1px solid #ddd;
 }
 
-.internship-table th {
+.applications-table th {
     padding: 12px;
     text-align: left;
     font-weight: 600;
@@ -261,31 +244,40 @@ input::placeholder {
     border-right: 1px solid #ddd;
 }
 
-.internship-table th:last-child {
+.applications-table th:last-child {
     border-right: none;
 }
 
-.internship-table td {
+.applications-table td {
     padding: 12px;
     color: #333;
     border-bottom: 1px solid #ddd;
     border-right: 1px solid #ddd;
 }
 
-.internship-table td:last-child {
+.applications-table td:last-child {
     border-right: none;
 }
 
-.internship-table tbody tr:hover {
+/* Center align status and actions columns */
+.applications-table th:nth-child(5),
+.applications-table th:nth-child(6),
+.applications-table td:nth-child(5),
+.applications-table td:nth-child(6) {
+    text-align: center;
+}
+
+.applications-table tbody tr:hover {
     background: #f8f9fa;
 }
 
-.internship-table tbody tr {
+.applications-table tbody tr {
     transition: background-color 0.2s ease;
 }
 
-/* Empty State Styling */
-.internship-table tbody td[colspan] {
+/* Empty State and Loading Messages */
+.loading-message,
+.no-data {
     text-align: center;
     color: #666;
     font-style: italic;
@@ -296,8 +288,7 @@ input::placeholder {
     border: none;
 }
 
-.status,
-.internship-status {
+.status {
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 12px;
@@ -305,14 +296,17 @@ input::placeholder {
     text-transform: capitalize;
 }
 
-.status.active,
-.internship-status.active {
+.status.pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status.accepted {
     background: #d4edda;
     color: #155724;
 }
 
-.status.closed,
-.internship-status.closed {
+.status.rejected {
     background: #f8d7da;
     color: #721c24;
 }
@@ -335,23 +329,33 @@ input::placeholder {
     text-transform: uppercase;
 }
 
-.edit-btn {
-    background: #3498db;
+.accept-btn {
+    background: #27ae60;
     color: white;
 }
 
-.edit-btn:hover {
-    background: #2980b9;
+.accept-btn:hover {
+    background: #229954;
     transform: translateY(-1px);
 }
 
-.delete-btn {
+.reject-btn {
     background: #e74c3c;
     color: white;
 }
 
-.delete-btn:hover {
+.reject-btn:hover {
     background: #c0392b;
+    transform: translateY(-1px);
+}
+
+.view-btn {
+    background: #3498db;
+    color: white;
+}
+
+.view-btn:hover {
+    background: #2980b9;
     transform: translateY(-1px);
 }
 
@@ -420,16 +424,10 @@ input::placeholder {
         order: 3;
     }
     
-    .internships-header {
-        flex-direction: column;
-        gap: 15px;
-        align-items: stretch;
-        text-align: center;
-    }
-    
     .filter-controls {
         flex-direction: column;
         align-items: stretch;
+        gap: 10px;
     }
     
     .filter-controls select,
@@ -443,7 +441,26 @@ input::placeholder {
     }
     
     main {
-        padding: 0 10px;
+        padding: 0;
+    }
+    
+    .applications-table {
+        font-size: 12px;
+    }
+    
+    .applications-table th,
+    .applications-table td {
+        padding: 8px 4px;
+    }
+    
+    .actions {
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    .actions button {
+        font-size: 10px;
+        padding: 4px 8px;
     }
 }
 
@@ -458,10 +475,13 @@ input::placeholder {
         text-align: center;
     }
     
-    .add-btn {
-        padding: 10px 20px;
-        font-size: 0.9rem;
+    .applications-table th,
+    .applications-table td {
+        padding: 6px 2px;
+        font-size: 11px;
     }
-}
-
- 
+    
+    .page-title {
+        font-size: 22px;
+    }
+} 

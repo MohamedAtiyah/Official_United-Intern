@@ -182,6 +182,77 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Filter functionality
+  const statusFilter = document.getElementById('statusFilter');
+  const searchInput = document.getElementById('searchInput');
+  
+  let allInternships = [];
+  
+  // Modified loadInternships to store all internships
+  async function loadInternshipsWithFilter() {
+    if (!currentCompany) return;
+    
+    tbody.innerHTML = '<tr><td colspan="8">Loading...</td></tr>';
+    try {
+      const res = await fetch(`/api/internships/company/${currentCompany.id}`);
+      allInternships = await res.json();
+      filterInternships();
+    } catch (err) {
+      console.error('Error loading internships:', err);
+      tbody.innerHTML = '<tr><td colspan="8">Failed to load internships.</td></tr>';
+    }
+  }
+  
+  // Filter internships
+  function filterInternships() {
+    const statusValue = statusFilter?.value || 'all';
+    const searchValue = searchInput?.value?.toLowerCase() || '';
+    
+    let filteredInternships = allInternships.filter(internship => {
+      const matchesStatus = statusValue === 'all' || internship.status.toLowerCase() === statusValue;
+      const matchesSearch = internship.title.toLowerCase().includes(searchValue) ||
+                           internship.location.toLowerCase().includes(searchValue) ||
+                           internship.type.toLowerCase().includes(searchValue);
+      
+      return matchesStatus && matchesSearch;
+    });
+    
+    if (!filteredInternships.length) {
+      tbody.innerHTML = '<tr><td colspan="8">No internships found. Click "Add New Internship" to create one.</td></tr>';
+      return;
+    }
+    
+    tbody.innerHTML = '';
+    filteredInternships.forEach(internship => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${internship.company_name}</td>
+        <td>${internship.title}</td>
+        <td>${internship.location}</td>
+        <td>${internship.duration}</td>
+        <td>${internship.type}</td>
+        <td><span class="status ${internship.status.toLowerCase()}">${internship.status}</span></td>
+        <td>${internship.applications}</td>
+        <td class="actions">
+          <button class="edit-btn" data-id="${internship.id}">Edit</button>
+          <button class="delete-btn" data-id="${internship.id}">Delete</button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+  
+  // Add filter event listeners
+  if (statusFilter) {
+    statusFilter.addEventListener('change', filterInternships);
+  }
+  if (searchInput) {
+    searchInput.addEventListener('input', filterInternships);
+  }
+  
+  // Update loadInternships to use the new filter version
+  loadInternships = loadInternshipsWithFilter;
+
   // Initialize page
   getCurrentCompany();
   if (currentCompany) {

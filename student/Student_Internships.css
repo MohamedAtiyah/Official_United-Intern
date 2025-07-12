@@ -13,32 +13,91 @@ body {
     min-height: 100vh;
 }
 
-/* Navigation Bar */
-.navbar {
-    background: white;
-    padding: 20px 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 0 20px;
 }
 
-.navbar a {
-    display: inline-block;
+/* Navigation Header - Admin Style */
+.main-header {
+    background: white;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+.header-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand-section {
+    flex: 0 0 auto;
+}
+
+.brand-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.admin-nav {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    flex: 1;
+    justify-content: center;
+}
+
+.admin-nav a {
     text-decoration: none;
     color: #666;
-    font-weight: 500;
-    padding: 8px 16px;
-    margin: 0 10px;
-    border-radius: 4px;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    font-size: 0.9rem;
+}
+
+.admin-nav a:hover {
+    color: #3498db;
+    background: #f8f9fa;
+    transform: translateY(-2px);
+}
+
+.nav-active {
+    color: #3498db !important;
+    background: #e3f2fd !important;
+}
+
+.logout-section {
+    flex: 0 0 auto;
+}
+
+.logout-section .logout-btn {
+    background: #e74c3c !important;
+    color: white !important;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
     transition: all 0.3s ease;
 }
 
-.navbar a:hover {
-    color: #007bff;
-    background: #f8f9fa;
+.logout-section .logout-btn:hover {
+    background: #c0392b !important;
+    color: white !important;
+    transform: translateY(-2px);
 }
 
 /* Main Content */
@@ -196,5 +255,35 @@ table tbody tr:hover {
 
 #noApplications a:hover {
     text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .admin-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+    }
+    
+    .admin-nav a {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .main-header {
+        padding: 15px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
 }
 

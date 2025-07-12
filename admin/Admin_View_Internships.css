@@ -13,6 +13,13 @@ body {
     min-height: 100vh;
 }
 
+/* Main Content */
+main {
+    width: 100%;
+    background: transparent;
+    padding: 0;
+}
+
 .manage-container {
     min-height: 100vh;
     display: flex;
@@ -38,70 +45,89 @@ header {
     width: 100%;
 }
 
-nav {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 15px;
-}
 
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin: 0;
-    padding: 0;
-}
-
-nav li {
-    margin: 0;
-}
-
-nav a {
-    text-decoration: none;
-    color: #666;
-    font-weight: 500;
-    padding: 8px 16px;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-}
-
-nav a:hover {
-    color: #007bff;
-    background: #f8f9fa;
-}
 
 .header-content {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
-.header-spacer {
-    width: 150px;
+.brand-section {
+    flex: 0 0 auto;
 }
 
-.header-title {
-    flex: 1;
-    text-align: center;
-    color: #333;
-    font-size: 28px;
-    font-weight: bold;
+.brand-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2c3e50;
     margin: 0;
+}
+
+.admin-nav {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    flex: 1;
+    justify-content: center;
+}
+
+.admin-nav a {
+    text-decoration: none;
+    color: #666;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    font-size: 0.9rem;
+}
+
+.admin-nav a:hover {
+    color: #3498db;
+    background: #f8f9fa;
+    transform: translateY(-2px);
+}
+
+.nav-active {
+    color: #3498db !important;
+    background: #e3f2fd !important;
+}
+
+.logout-section {
+    flex: 0 0 auto;
+}
+
+.logout-section .logout-btn {
+    background: #e74c3c !important;
+    color: white !important;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.logout-section .logout-btn:hover {
+    background: #c0392b !important;
+    color: white !important;
+    transform: translateY(-2px);
 }
 
 /* Filter Section */
 .filters {
     background: white;
     padding: 20px;
-    margin-bottom: 20px;
+    margin: 0 auto 20px auto;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: calc(100% - 40px);
+    max-width: 1160px;
+    box-sizing: border-box;
 }
 
 .filters h2 {
@@ -150,6 +176,10 @@ input::placeholder {
     padding: 0;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 0 auto 20px auto;
+    width: calc(100% - 40px);
+    max-width: 1160px;
+    box-sizing: border-box;
 }
 
 .internships-list h2 {

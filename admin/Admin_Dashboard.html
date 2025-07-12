@@ -3,42 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Dashboard</title>
+    <title>Admin Dashboard - United Intern</title>
     <link rel="stylesheet" href="Admin_Dashboard.css">
 </head>
 <body>
-    <div class="dashboard-wrapper">
-        <!-- Left Image -->
-        <img src="Dashboard_IMG_Left.jpg" alt="Left" class="dashboard-img">
+    <!-- Header with Logo and Navigation -->
+    <header class="main-header">
+        <div class="container">
+                            <div class="header-content">
+                    <div class="brand-section">
+                        <h1 class="brand-name">United Intern</h1>
+                    </div>
+                    <nav class="admin-nav">
+                        <a href="Admin_Dashboard.html" class="nav-active">Dashboard</a>
+                        <a href="Admin_Manage_Internship.html">Manage Internships</a>
+                        <a href="Admin_View_Internships.html">View Internships</a>
+                        <a href="Admin_Manage_Applications.html">Manage Applications</a>
+                        <a href="Admin_Account.html">Account</a>
+                    </nav>
+                    <div class="logout-section">
+                        <a href="Admin_Logout.html" class="logout-btn">Logout</a>
+                    </div>
+                </div>
+        </div>
+    </header>
 
-        <!-- Center Dashboard -->
-        <div class="dashboard-container">
-            <h1 id="welcomeMessage">Welcome, [Company Name]</h1>
-            <div class="button-group">
-                <a href="Admin_Manage_Internship.html" class="dashboard-button">Manage Internships</a>
-                <a href="Admin_View_Internships.html" class="dashboard-button">View Internships</a>
-                <a href="Admin_Account.html" class="dashboard-button">Account Settings</a>
-                <a href="Admin_Logout.html" class="dashboard-button logout-button">Logout</a>
+    <!-- Hero Dashboard Section -->
+    <section class="dashboard-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="welcome-section">
+                    <h2 id="welcomeMessage">Welcome to United Intern</h2>
+                    <h3 id="companyGreeting">Admin Dashboard</h3>
+                    <p class="hero-description">
+                        Manage your internship programs, review applications, and connect with talented students. 
+                        Your gateway to building the next generation of professionals.
+                    </p>
+                </div>
+                <div class="hero-image">
+                    <img src="Dashboard_IMG_Left.jpg" alt="Dashboard" class="dashboard-image">
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- Right Image -->
-        <img src="Dashboard_IMG_Right.jpg" alt="Right" class="dashboard-img">
-    </div>
+    <!-- Quick Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <h3 id="totalInternships">0</h3>
+                    <p>Active Internships</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📋</div>
+                    <h3 id="totalApplications">0</h3>
+                    <p>Total Applications</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <h3 id="acceptedApplications">0</h3>
+                    <p>Accepted Applications</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⏳</div>
+                    <h3 id="pendingApplications">0</h3>
+                    <p>Pending Reviews</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Dashboard Actions -->
+    <section class="dashboard-actions">
+        <div class="container">
+            <h2 class="section-title">Quick Actions</h2>
+            <div class="actions-grid">
+                <div class="action-card">
+                    <div class="card-header">
+                        <div class="card-icon">🏢</div>
+                        <h3>Manage Internships</h3>
+                    </div>
+                    <p>Create, edit, and manage your internship postings. Keep your opportunities up to date.</p>
+                    <a href="Admin_Manage_Internship.html" class="btn btn-primary">Manage Internships</a>
+                </div>
+
+                <div class="action-card">
+                    <div class="card-header">
+                        <div class="card-icon">👀</div>
+                        <h3>View Internships</h3>
+                    </div>
+                    <p>Browse all your active and closed internship listings. Monitor performance and engagement.</p>
+                    <a href="Admin_View_Internships.html" class="btn btn-secondary">View Internships</a>
+                </div>
+
+                <div class="action-card">
+                    <div class="card-header">
+                        <div class="card-icon">📝</div>
+                        <h3>Review Applications</h3>
+                    </div>
+                    <p>Review student applications, accept or reject candidates, and manage your hiring pipeline.</p>
+                    <a href="Admin_Manage_Applications.html" class="btn btn-success">Review Applications</a>
+                </div>
+
+                <div class="action-card">
+                    <div class="card-header">
+                        <div class="card-icon">⚙️</div>
+                        <h3>Account Settings</h3>
+                    </div>
+                    <p>Update your company profile, contact information, and account preferences.</p>
+                    <a href="Admin_Account.html" class="btn btn-outline">Account Settings</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="admin-footer">
+        <div class="container">
+            <p>&copy; 2024 United Intern. All rights reserved.</p>
+            <p>Empowering the next generation through meaningful internship opportunities.</p>
+        </div>
+    </footer>
 
     <script>
-        // Load company name from sessionStorage or localStorage
+        let currentCompanyId = null;
+
+        // Load company data and customize welcome message
         document.addEventListener('DOMContentLoaded', function() {
             const companyData = sessionStorage.getItem('companyData') || localStorage.getItem('companyData');
             if (companyData) {
                 const company = JSON.parse(companyData);
+                currentCompanyId = company.id;
+                
                 const welcomeMessage = document.getElementById('welcomeMessage');
-                welcomeMessage.textContent = `Welcome, ${company.name || '[Company Name]'}`;
+                const companyGreeting = document.getElementById('companyGreeting');
+                
+                welcomeMessage.textContent = `Welcome back, ${company.name || 'Admin'}!`;
+                companyGreeting.textContent = `${company.name || 'Company'} Dashboard`;
             } else {
-                // If no company data, redirect to login
+                // Redirect to login if no company data
                 window.location.href = 'Admin_Login.html';
             }
+            
+            // Load dashboard statistics
+            loadDashboardStats();
         });
+
+        // Load dashboard statistics
+        async function loadDashboardStats() {
+            if (!currentCompanyId) return;
+            
+            try {
+                // Load internship stats - count only ACTIVE internships
+                const internshipResponse = await fetch(`/api/internships/company/${currentCompanyId}`);
+                if (internshipResponse.ok) {
+                    const internships = await internshipResponse.json();
+                    // Filter for only Active status internships
+                    const activeInternships = internships.filter(internship => internship.status === 'Active');
+                    document.getElementById('totalInternships').textContent = activeInternships.length;
+                }
+
+                // Load application stats
+                const applicationResponse = await fetch(`/api/admin/applications/${currentCompanyId}`);
+                if (applicationResponse.ok) {
+                    const applications = await applicationResponse.json();
+                    document.getElementById('totalApplications').textContent = applications.length;
+                    
+                    const accepted = applications.filter(app => app.status === 'accepted').length;
+                    const pending = applications.filter(app => app.status === 'pending').length;
+                    
+                    document.getElementById('acceptedApplications').textContent = accepted;
+                    document.getElementById('pendingApplications').textContent = pending;
+                }
+            } catch (error) {
+                console.error('Error loading dashboard stats:', error);
+                // Set default values on error
+                document.getElementById('totalInternships').textContent = '0';
+                document.getElementById('totalApplications').textContent = '0';
+                document.getElementById('acceptedApplications').textContent = '0';
+                document.getElementById('pendingApplications').textContent = '0';
+            }
+        }
+
+
     </script>
 </body>
 </html>

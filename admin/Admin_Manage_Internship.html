@@ -3,55 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Manage Internships</title>
+  <title>Manage Internships - United Intern</title>
   <link rel="stylesheet" href="Admin_Manage_Internship.css">
 </head>
 <body>
   <div class="manage-container">
-    <header>
+    <header class="main-header">
       <div class="container">
-        <nav>
-          <ul>
-            <li><a href="Admin_Dashboard.html">Dashboard</a></li>
-            <li><a href="Admin_Manage_Internship.html">Manage Internships</a></li>
-            <li><a href="Admin_View_Internships.html">View Internships</a></li>
-            <li><a href="Admin_Account.html">Account</a></li>
-            <li><a href="Admin_Logout.html">Logout</a></li>
-          </ul>
-        </nav>
         <div class="header-content">
-          <div class="header-spacer"></div>
-          <h2 class="header-title">Manage Internships</h2>
-          <button class="add-btn">Add New Internship</button>
+          <div class="brand-section">
+            <h1 class="brand-name">United Intern</h1>
+          </div>
+          <nav class="admin-nav">
+            <a href="Admin_Dashboard.html">Dashboard</a>
+            <a href="Admin_Manage_Internship.html" class="nav-active">Manage Internships</a>
+            <a href="Admin_View_Internships.html">View Internships</a>
+            <a href="Admin_Manage_Applications.html">Manage Applications</a>
+            <a href="Admin_Account.html">Account</a>
+          </nav>
+          <div class="logout-section">
+            <a href="Admin_Logout.html" class="logout-btn">Logout</a>
+          </div>
         </div>
       </div>
     </header>
 
-    <div class="table-container">
-      <table class="internship-table">
-        <thead>
-          <tr>
-            <th>Company</th>
-            <th>Title</th>
-            <th>Location</th>
-            <th>Duration</th>
-            <th>Type</th>
-            <th>Status</th>
-            <th>Applications</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="internship-tbody">
-          <!-- Internship rows will be rendered here dynamically -->
-        </tbody>
-      </table>
-    </div>
+    <main>
+      <section class="filters">
+        <h2>Filter Internships</h2>
+        <div class="filter-controls">
+          <select id="statusFilter">
+            <option value="all">All Status</option>
+            <option value="active">Active</option>
+            <option value="closed">Closed</option>
+          </select>
+          <input type="text" id="searchInput" placeholder="Search internships...">
+        </div>
+      </section>
 
-    <div class="pagination">
-      <button class="prev-btn">Previous</button>
-      <span class="page-info">Page 1 of 1</span>
-      <button class="next-btn">Next</button>
-    </div>
+      <section class="internships-list">
+        <div class="internships-header">
+          <h2>Your Internships</h2>
+          <button class="add-btn">Add New Internship</button>
+        </div>
+        <div id="internshipsContainer">
+          <table class="internship-table">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Title</th>
+                <th>Location</th>
+                <th>Duration</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Applications</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="internship-tbody">
+              <!-- Internship rows will be rendered here dynamically -->
+            </tbody>
+          </table>
+
+          <div class="pagination">
+            <button class="prev-btn">Previous</button>
+            <span class="page-info">Page 1 of 1</span>
+            <button class="next-btn">Next</button>
+          </div>
+        </div>
+      </section>
+    </main>
   </div>
   <script src="Admin_Manage_Internship.js"></script>
 </body>

@@ -1,21 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Student Profile</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Profile - United Intern</title>
   <link rel="stylesheet" href="Student_Profile.css">
 </head>
 <body>
-  <div class="navbar">
-    <a href="Student_Home.html">Dashboard</a>
-    <a href="Student_Internships.html">Browse Internships</a>
-    <a href="Student_Applications.html">My Applications</a>
-    <a href="Student_Profile.html">Profile</a>
-    <a href="Student_Logout.html">Logout</a>
-  </div>
-  
-  <div class="main-content">
-    <h2>My Profile</h2>
-    <div class="profile-container">
+  <div class="manage-container">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-content">
+          <div class="brand-section">
+            <h1 class="brand-name">United Intern</h1>
+          </div>
+          <nav class="admin-nav">
+            <a href="Student_Home.html">Dashboard</a>
+            <a href="Student_Internships.html">Browse Internships</a>
+            <a href="Student_Applications.html">My Applications</a>
+            <a href="Student_Profile.html" class="nav-active">Profile</a>
+          </nav>
+          <div class="logout-section">
+            <a href="Student_Logout.html" class="logout-btn">Logout</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
       <form id="profileForm">
         <div class="form-group">
           <label for="name">Full Name</label>
@@ -23,7 +35,7 @@
         </div>
         <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="Enter your email address" readonly>
+          <input type="email" id="email" name="email" placeholder="Your registration email" readonly>
         </div>
         <div class="form-group">
           <label for="university">University</label>
@@ -35,12 +47,35 @@
         </div>
         <button type="submit" class="update-btn">Update Profile</button>
       </form>
-    </div>
+    </main>
   </div>
 
   <script>
-    // Fetch current student info
-    window.onload = async function() {
+    // Load student data on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      loadStudentData();
+    });
+
+    // Load actual student data from localStorage/sessionStorage
+    function loadStudentData() {
+      const studentData = sessionStorage.getItem('studentData') || localStorage.getItem('studentData');
+      if (studentData) {
+        const student = JSON.parse(studentData);
+        console.log('Loading student data:', student);
+        
+        // Populate form fields with actual student data
+        document.getElementById('name').value = student.name || '';
+        document.getElementById('email').value = student.email || '';
+        document.getElementById('university').value = student.university || '';
+        document.getElementById('major').value = student.major || '';
+      } else {
+        // If no student data, try API call as fallback
+        loadStudentDataFromAPI();
+      }
+    }
+
+    // Fallback API call
+    async function loadStudentDataFromAPI() {
       try {
         const res = await fetch('/api/student/profile');
         if (res.ok) {
@@ -49,37 +84,44 @@
           document.getElementById('email').value = data.email || '';
           document.getElementById('university').value = data.university || '';
           document.getElementById('major').value = data.major || '';
+        } else {
+          // If API fails, redirect to login
+          console.log('No student data found, redirecting to login');
+          window.location.href = 'Student_Login.html';
         }
       } catch (error) {
         console.error('Error loading profile:', error);
+        // Redirect to login if error
+        window.location.href = 'Student_Login.html';
       }
-    };
+    }
 
-    // Update student info
-    document.getElementById('profileForm').addEventListener('submit', async function(e) {
+    // Handle form submission
+    document.getElementById('profileForm').addEventListener('submit', function(e) {
       e.preventDefault();
+      const formData = new FormData(e.target);
       const data = {
-        name: document.getElementById('name').value,
-        university: document.getElementById('university').value,
-        major: document.getElementById('major').value
+        name: formData.get('name'),
+        university: formData.get('university'),
+        major: formData.get('major')
       };
       
-      try {
-        const res = await fetch('/api/student/profile', {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        
-        if (res.ok) {
-          alert('Profile updated successfully!');
-        } else {
-          alert('Failed to update profile.');
-        }
-      } catch (error) {
-        console.error('Error updating profile:', error);
-        alert('Failed to update profile. Please try again.');
-      }
+      // Update storage with new data
+      const currentStudentData = JSON.parse(sessionStorage.getItem('studentData') || localStorage.getItem('studentData') || '{}');
+      const updatedStudentData = {
+        ...currentStudentData,
+        name: data.name,
+        university: data.university,
+        major: data.major
+      };
+      
+      // Update both storage methods for consistency
+      sessionStorage.setItem('studentData', JSON.stringify(updatedStudentData));
+      localStorage.setItem('studentData', JSON.stringify(updatedStudentData));
+      
+      // Show success message
+      alert('Profile updated successfully!');
+      console.log('Updated data:', data);
     });
   </script>
 </body>
